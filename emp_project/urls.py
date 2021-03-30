@@ -20,4 +20,5 @@ from emp_app.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    path('create-off', create_off_view, name='create-off'),
 ]

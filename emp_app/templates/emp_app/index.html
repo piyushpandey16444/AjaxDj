@@ -13,6 +13,7 @@
         <div class="col-md-5">
             <h1>This is Off form.</h1>
             <form action="javascript:void(0)" method="post" id='off'>
+                {% csrf_token %}
                 {{off_form.as_p}}
                 <input type="submit" value="Office Create"> <hr>
             </form>
@@ -21,6 +22,7 @@
         <div class="col-md-7">
             <h1>This is Emp form.</h1>
             <form action="javascript:void(0)" method="post" id='emp'>
+                {% csrf_token %}
                 {{emp_form.as_p}}
             <input type="submit" value="Employee Create">
             </form><hr>
@@ -34,14 +36,37 @@
 
 <script>
 
-    $('#off').on('submit', (e)=>{
+    $('#off').submit((e)=>{
         e.preventDefault();
-        alert('off')
+        // data read
+       const dataObtained =  $("#off").serializeArray()
+       const json_dt = dataObtained.map(function(v) {
+           return [v.name, v.value];
+        });
+        // send data to django
+        
+        $.ajax({
+            url: "create-off",
+            method: "POST",
+            data: json_dt,
+        })
+        .done((response)=>{
+            console.log("response: ", response)
+        })
+        .fail((response)=>{
+            console.log("response: ", response)
+        })
     });
 
     $('#emp').on('submit', (e)=>{
         e.preventDefault();
-        alert('emp')
+        // data read
+       const dataObtained =  $("#off").serializeArray()
+       const json_dt = dataObtained.map(function(v) {
+           return [v.name, v.value];
+        });
+        
+        // send data to django
     });
 
 </script>
