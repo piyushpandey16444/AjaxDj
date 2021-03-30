@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Office, Employee
 
-# Register your models here.
+admin.site.register(Office)
+admin.site.register(Employee)
