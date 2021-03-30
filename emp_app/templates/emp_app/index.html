@@ -7,6 +7,21 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>This is home page.</h1>
+    <div>
+        <h1>This is Emp form.</h1>
+        <form action="javascript:void(0)" method="post">
+            {{emp_form.as_p}}
+        <input type="submit" value="Employee Create">
+        </form><hr>
+    </div>
+    
+    <div>
+        <h1>This is Off form.</h1>
+        <form action="javascript:void(0)" method="post">
+            {{off_form.as_p}}
+            <input type="submit" value="Office Create">
+        </form>
+    </div>
+        
 </body>
 </html>
